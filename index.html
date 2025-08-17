@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" class="dark"> <!-- Default to dark theme -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amirhossein Zamani - Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #f3f4f6; /* gray-100 */
+            --bg-secondary: #ffffff; /* white */
+            --text-primary: #1f2937; /* gray-800 */
+            --text-secondary: #4b5563; /* gray-600 */
+            --text-accent: #059669; /* green-600 */
+            --border-color: #d1d5db; /* gray-300 */
+            --shadow-color: rgba(17, 12, 46, 0.1);
+        }
+
+        html.dark {
+            --bg-primary: #111827; /* gray-900 */
+            --bg-secondary: #1f2937; /* gray-800 */
+            --text-primary: #f9fafb; /* gray-50 */
+            --text-secondary: #9ca3af; /* gray-400 */
+            --text-accent: #34d399; /* green-400 */
+            --border-color: #374151; /* gray-700 */
+            --shadow-color: rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .resume-card {
+            background-color: var(--bg-secondary);
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -1px var(--shadow-color);
+        }
+        
+        .section-title {
+            border-bottom-width: 2px;
+            border-color: var(--border-color);
+            padding-bottom: 0.75rem;
+            color: var(--text-accent);
+        }
+
+        .contact-link {
+            transition: color 0.3s;
+            word-break: break-all;
+        }
+        .contact-link:hover {
+            color: var(--text-accent);
+        }
+
+        .skill-tag {
+            background-color: var(--bg-primary);
+            color: var(--text-accent);
+            font-weight: 500;
+        }
+
+        .action-button {
+            background-color: var(--bg-secondary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 9999px;
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .action-button:hover {
+            color: var(--text-accent);
+            border-color: var(--text-accent);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Action Buttons -->
+    <div class="action-buttons fixed top-4 right-4 z-50 flex gap-2">
+        <button id="theme-switcher" class="action-button" aria-label="Toggle theme" title="Toggle Theme">
+            <i class="fas fa-sun text-lg"></i>
+        </button>
+    </div>
+
+    <!-- Main container -->
+    <div id="resume-content" class="container mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+            <!-- === SIDEBAR === -->
+            <aside class="lg:col-span-1 lg:sticky top-8 space-y-8 h-full">
+                <div id="sidebar-card" class="sidebar-card p-8 rounded-xl" style="background-color: var(--bg-secondary); box-shadow: 0 4px 6px -1px var(--shadow-color);">
+                    <!-- Profile content will be injected here -->
+                </div>
+            </aside>
+
+            <!-- === MAIN CONTENT === -->
+            <main class="lg:col-span-3 space-y-12">
+                <!-- Summary, Experience, Projects, Courses will be injected here -->
+            </main>
+        </div>
+    </div>
+    
+    <!-- RENDER SCRIPT -->
+    <script>
+        // --- RESUME DATA (Previously in resume-data.js) ---
+        const resumeData = {
+            "sidebar": {
+                "personalInfo": {
+                    "name": "Amirhossein Zamani",
+                    "title": "Software Developer",
+                    "imageUrl": "me.jpg"
+                },
+                "contact": {
+                    "email": "amirhosseinzamani454@gmail.com",
+                    "phone": "09391827599",
+                    "location": "Isfahan, Iran",
+                    "githubUrl": "https://github.com/Amir-Hzz79"
+                },
+                "skills": [
+                    {
+                        "category": "Mobile & Frontend",
+                        "technologies": ["Flutter", "Blazor", "HTML/CSS"]
+                    },
+                    {
+                        "category": "Backend & Database",
+                        "technologies": ["C#", "ASP.NET Core", "REST API", "Entity Framework", "MS SQL Server"]
+                    },
+                    {
+                        "category": "Game Development",
+                        "technologies": ["Unity", "C++"]
+                    },
+                    {
+                        "category": "Tools & Other",
+                        "technologies": ["Git", "Windows Forms"]
+                    }
+                ],
+                "education": {
+                    "degree": "BS in Computer Engineering",
+                    "university": "University of Isfahan",
+                    "years": "2012 – 2023"
+                },
+                "languages": [
+                    { "name": "Persian", "proficiency": "Native" },
+                    { "name": "English", "proficiency": "Professional" }
+                ]
+            },
+            "main": {
+                "summary": "A dedicated and versatile software developer with experience in mobile development using Flutter and backend services with ASP.NET Core. Passionate about building clean, efficient applications and contributing to innovative projects in a collaborative team environment.",
+                "experience": [
+                    {
+                        "title": "Freelance Developer",
+                        "company": "Remote",
+                        "period": "April 2024 – Present",
+                        "description": ["Developing applications using .NET and Flutter for various clients."]
+                    },
+                    {
+                        "title": "Android Developer (Flutter)",
+                        "company": "Barnamenevisan Pasargad Co.",
+                        "period": "November 2022 – Present",
+                        "description": []
+                    },
+                    {
+                        "title": "Game Developer (Unity)",
+                        "company": "Entertainment Industry Innovation Center, University of Isfahan",
+                        "period": "May 2022 – October 2022",
+                        "description": [
+                            "Developed games using the Unity engine.",
+                            "Contributed to the implementation of online game infrastructure with ASP.NET Core and RESTful APIs."
+                        ]
+                    }
+                ],
+                "projects": [
+                    {
+                        "name": "Planza - Goal & Task Manager",
+                        "description": "Android app for managing long-term goals, daily tasks, and habits.",
+                        "tags": ["Flutter"],
+                        "url": "https://github.com/Amir-Hzz79/planza",
+                        "urlText": "View on GitHub",
+                        "icon": "fa-github"
+                    },
+                    {
+                        "name": "Hampa Plus Companion App",
+                        "description": "A mobile banking-style application for microfinance funds.",
+                        "tags": ["Flutter"],
+                        "url": "https://cafebazaar.ir/app/bnpco.ir.HampaPlus",
+                        "urlText": "View on CafeBazaar",
+                        "icon": "fa-external-link-alt"
+                    },
+                    {
+                        "name": "Nearby Places Finder",
+                        "description": "Simple Flutter app using Foursquare API to find nearby locations.",
+                        "tags": ["Flutter"],
+                        "url": "https://github.com/Amir-Hzz79/nearby_finder",
+                        "urlText": "View on GitHub",
+                        "icon": "fa-github"
+                    },
+                    {
+                        "name": "Flutter Chess Game",
+                        "description": "A complete chess game implemented using Flutter.",
+                        "tags": ["Flutter"],
+                        "url": "https://github.com/Amir-Hzz79/flutter-chess-game",
+                        "urlText": "View on GitHub",
+                        "icon": "fa-github"
+                    },
+                    {
+                        "name": "Online Room Reservation App",
+                        "description": "Web application for booking rooms online.",
+                        "tags": ["ASP.NET Core", "Blazor"],
+                        "url": "https://panel.zaersarafatemiye.ir/",
+                        "urlText": "View Live",
+                        "icon": "fa-external-link-alt"
+                    }
+                ],
+                "courses": [
+                    "Flutter Course - Udemy (Maximilian)",
+                    "ASP.NET MVC Course - Toplearn",
+                    "ASP.NET Core Course - Toplearn",
+                    "Game Development with Unity - University of Isfahan"
+                ]
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- THEME SWITCHER LOGIC ---
+            const themeSwitcher = document.getElementById('theme-switcher');
+            const html = document.documentElement;
+            const icon = themeSwitcher.querySelector('i');
+
+            const setTheme = (theme) => {
+                if (theme === 'dark') {
+                    html.classList.add('dark');
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    html.classList.remove('dark');
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                    localStorage.setItem('theme', 'light');
+                }
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+
+            themeSwitcher.addEventListener('click', () => {
+                const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+                setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+            });
+
+            // --- DYNAMIC CONTENT RENDERING ---
+            const sidebarCard = document.getElementById('sidebar-card');
+            const mainContent = document.querySelector('main');
+
+            // 1. Render Sidebar
+            const { personalInfo, contact, skills, education, languages } = resumeData.sidebar;
+            sidebarCard.innerHTML = `
+                <div class="profile-image-container mx-auto mb-6 w-36 h-36 rounded-full overflow-hidden ring-4 ring-[var(--text-accent)] ring-opacity-50">
+                    <img src="${personalInfo.imageUrl}" alt="${personalInfo.name}" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/144x144/cccccc/333333?text=Image+Not+Found';">
+                </div>
+                <h1 class="text-3xl font-bold text-center" style="color: var(--text-accent);">${personalInfo.name}</h1>
+                <p class="text-center mt-2" style="color: var(--text-secondary);">${personalInfo.title}</p>
+
+                <div class="sidebar-section mt-8 pt-6 border-t" style="border-color: var(--border-color);">
+                    <h3 class="font-semibold mb-4 text-lg">Contact</h3>
+                    <div class="space-y-4 text-sm">
+                        <p class="flex items-start"><i class="fas fa-envelope fa-fw w-6 text-center mr-2 mt-1" style="color: var(--text-accent);"></i><a href="mailto:${contact.email}" class="contact-link">${contact.email}</a></p>
+                        <p><i class="fas fa-phone fa-fw w-6 text-center mr-2" style="color: var(--text-accent);"></i><a href="tel:${contact.phone}" class="contact-link">${contact.phone}</a></p>
+                        <p><i class="fas fa-map-marker-alt fa-fw w-6 text-center mr-2" style="color: var(--text-accent);"></i>${contact.location}</p>
+                        <p class="flex items-start"><i class="fab fa-github fa-fw w-6 text-center mr-2 mt-1" style="color: var(--text-accent);"></i><a href="${contact.githubUrl}" target="_blank" class="contact-link">${contact.githubUrl.replace('https://', '')}</a></p>
+                    </div>
+                </div>
+
+                <div class="sidebar-section mt-8 pt-6 border-t" style="border-color: var(--border-color);">
+                    <h3 class="font-semibold mb-4 text-lg">Skills</h3>
+                    <div class="space-y-4 text-sm">
+                        ${skills.map(skillCategory => `
+                            <div>
+                                <h4 class="font-bold mb-2">${skillCategory.category}</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    ${skillCategory.technologies.map(tech => `<span class="skill-tag text-xs px-2 py-1 rounded-full">${tech}</span>`).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="sidebar-section mt-8 pt-6 border-t" style="border-color: var(--border-color);">
+                    <h3 class="font-semibold mb-4 text-lg">Education</h3>
+                    <p class="font-bold text-sm">${education.degree}</p>
+                    <p class="text-sm" style="color: var(--text-secondary);">${education.university}</p>
+                    <p class="text-xs mt-1" style="color: var(--text-secondary);">${education.years}</p>
+                </div>
+
+                <div class="sidebar-section mt-8 pt-6 border-t" style="border-color: var(--border-color);">
+                    <h3 class="font-semibold mb-4 text-lg">Languages</h3>
+                    ${languages.map(lang => `<p class="text-sm"><strong class="font-medium">${lang.name}:</strong> ${lang.proficiency}</p>`).join('')}
+                </div>
+            `;
+
+            // 2. Render Main Content
+            const { summary, experience, projects, courses } = resumeData.main;
+            mainContent.innerHTML = `
+                <section>
+                    <h2 class="text-2xl font-semibold mb-6 section-title"><i class="fas fa-user-tie mr-3"></i>Professional Summary</h2>
+                    <div class="resume-card p-8"><p class="leading-relaxed text-lg" style="color: var(--text-secondary);">${summary}</p></div>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl font-semibold mb-6 section-title"><i class="fas fa-briefcase mr-3"></i>Work Experience</h2>
+                    <div class="experience-wrapper space-y-8">
+                        ${experience.map(job => `
+                            <div class="resume-card p-8">
+                                <div class="flex flex-col sm:flex-row justify-between items-start">
+                                    <div>
+                                        <h3 class="text-xl font-bold">${job.title}</h3>
+                                        <p class="font-medium" style="color: var(--text-secondary);">${job.company}</p>
+                                    </div>
+                                    <p class="text-md whitespace-nowrap mt-2 sm:mt-0" style="color: var(--text-secondary);">${job.period}</p>
+                                </div>
+                                ${job.description && job.description.length > 0 ? `<ul class="mt-4 list-disc list-inside space-y-2" style="color: var(--text-secondary);">${job.description.map(item => `<li>${item}</li>`).join('')}</ul>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl font-semibold mb-6 section-title"><i class="fas fa-project-diagram mr-3"></i>Projects</h2>
+                    <div class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-8">
+                        ${projects.map(project => `
+                            <div class="resume-card p-6 flex flex-col">
+                                <div class="flex-grow">
+                                    <h3 class="text-lg font-bold">${project.name}</h3>
+                                    <p class="mt-2 text-sm" style="color: var(--text-secondary);">${project.description}</p>
+                                </div>
+                                <div class="mt-4 flex justify-between items-center">
+                                    <div>${project.tags.map(tag => `<span class="skill-tag text-xs px-2 py-1 rounded-full">${tag}</span>`).join(' ')}</div>
+                                    <a href="${project.url}" class="contact-link text-sm" target="_blank">${project.urlText} <i class="fas ${project.icon} ml-1"></i></a>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl font-semibold mb-6 section-title"><i class="fas fa-certificate mr-3"></i>Courses</h2>
+                    <div class="resume-card p-8">
+                        <ul class="list-disc list-inside space-y-2" style="color: var(--text-secondary);">
+                            ${courses.map(course => `<li>${course}</li>`).join('')}
+                        </ul>
+                    </div>
+                </section>
+            `;
+        });
+    </script>
+
+</body>
+</html>
