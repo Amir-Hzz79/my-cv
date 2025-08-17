@@ -6,6 +6,8 @@
     <title>Amirhossein Zamani - Resume</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font for Farsi -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -36,6 +38,11 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
         
+        /* Apply Vazirmatn font for Farsi */
+        html[lang="fa"] body {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
         .resume-card {
             background-color: var(--bg-secondary);
             border-radius: 0.75rem; /* rounded-xl */
@@ -76,17 +83,26 @@
             cursor: pointer;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
+            font-weight: 600; /* Make font bolder for EN/FA text */
         }
         .action-button:hover {
             color: var(--text-accent);
             border-color: var(--text-accent);
         }
+
+        /* RTL adjustments for icons */
+        html[lang="fa"] .mr-2 { margin-left: 0.5rem; margin-right: 0; }
+        html[lang="fa"] .mr-3 { margin-left: 0.75rem; margin-right: 0; }
+        html[lang="fa"] .ml-1 { margin-right: 0.25rem; margin-left: 0; }
+        html[lang="fa"] .list-disc { padding-right: 2rem; }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Action Buttons -->
-    <div class="action-buttons fixed top-4 right-4 z-50 flex gap-2">
+    <!-- The dir="ltr" attribute is added here to prevent the buttons from swapping positions in RTL mode -->
+    <div class="action-buttons fixed top-4 right-4 z-50 flex gap-2" dir="ltr">
+        <button id="language-switcher" class="action-button" aria-label="Toggle Language" title="Toggle Language"></button>
         <button id="theme-switcher" class="action-button" aria-label="Toggle theme" title="Toggle Theme">
             <i class="fas fa-sun text-lg"></i>
         </button>
@@ -112,168 +128,202 @@
     
     <!-- RENDER SCRIPT -->
     <script>
-        // --- RESUME DATA (Previously in resume-data.js) ---
-        const resumeData = {
-            "sidebar": {
-                "personalInfo": {
-                    "name": "Amirhossein Zamani",
-                    "title": "Software Developer",
-                    "imageUrl": "me.jpg"
-                },
-                "contact": {
-                    "email": "amirhosseinzamani454@gmail.com",
-                    "phone": "09391827599",
-                    "location": "Isfahan, Iran",
-                    "githubUrl": "https://github.com/Amir-Hzz79"
-                },
-                "skills": [
-                    {
-                        "category": "Mobile & Frontend",
-                        "technologies": ["Flutter", "Blazor", "HTML/CSS"]
+        const translations = {
+            "en": {
+                "title": "Amirhossein Zamani - Resume",
+                "sidebar": {
+                    "personalInfo": {
+                        "name": "Amirhossein Zamani",
+                        "title": "Software Developer",
+                        "imageUrl": "me.jpg"
                     },
-                    {
-                        "category": "Backend & Database",
-                        "technologies": ["C#", "ASP.NET Core", "REST API", "Entity Framework", "MS SQL Server"]
+                    "sections": {
+                        "contact": "Contact",
+                        "skills": "Skills",
+                        "education": "Education",
+                        "languages": "Languages"
                     },
-                    {
-                        "category": "Game Development",
-                        "technologies": ["Unity", "C++"]
+                    "contact": {
+                        "email": "amirhosseinzamani454@gmail.com",
+                        "phone": "09391827599",
+                        "location": "Isfahan, Iran",
+                        "githubUrl": "https://github.com/Amir-Hzz79"
                     },
-                    {
-                        "category": "Tools & Other",
-                        "technologies": ["Git", "Windows Forms"]
-                    }
-                ],
-                "education": {
-                    "degree": "BS in Computer Engineering",
-                    "university": "University of Isfahan",
-                    "years": "2012 – 2023"
+                    "skills": [
+                        { "category": "Mobile & Frontend", "technologies": ["Flutter", "Blazor", "HTML/CSS"] },
+                        { "category": "Backend & Database", "technologies": ["C#", "ASP.NET Core", "REST API", "Entity Framework", "MS SQL Server"] },
+                        { "category": "Game Development", "technologies": ["Unity", "C++"] },
+                        { "category": "Tools & Other", "technologies": ["Git", "Windows Forms"] }
+                    ],
+                    "education": {
+                        "degree": "BS in Computer Engineering",
+                        "university": "University of Isfahan",
+                        "years": "2012 – 2023"
+                    },
+                    "languages": [
+                        { "name": "Persian", "proficiency": "Native" },
+                        { "name": "English", "proficiency": "Professional" }
+                    ]
                 },
-                "languages": [
-                    { "name": "Persian", "proficiency": "Native" },
-                    { "name": "English", "proficiency": "Professional" }
-                ]
+                "main": {
+                    "sections": {
+                        "summary": "Professional Summary",
+                        "experience": "Work Experience",
+                        "projects": "Projects",
+                        "courses": "Courses"
+                    },
+                    "summary": "A dedicated and versatile software developer with experience in mobile development using Flutter and backend services with ASP.NET Core. Passionate about building clean, efficient applications and contributing to innovative projects in a collaborative team environment.",
+                    "experience": [
+                        { "title": "Freelance Developer", "company": "Remote", "period": "April 2024 – Present", "description": ["Developing applications using .NET and Flutter for various clients."] },
+                        { "title": "Android Developer (Flutter)", "company": "Barnamenevisan Pasargad Co.", "period": "November 2022 – Present", "description": [] },
+                        { "title": "Game Developer (Unity)", "company": "Entertainment Industry Innovation Center, University of Isfahan", "period": "May 2022 – October 2022", "description": ["Developed games using the Unity engine.", "Contributed to the implementation of online game infrastructure with ASP.NET Core and RESTful APIs."] }
+                    ],
+                    "projects": [
+                        { "name": "Planza - Goal & Task Manager", "description": "Android app for managing long-term goals, daily tasks, and habits.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/planza", "urlText": "View on GitHub", "icon": "fa-github" },
+                        { "name": "Hampa Plus Companion App", "description": "A mobile banking-style application for microfinance funds.", "tags": ["Flutter"], "url": "https://cafebazaar.ir/app/bnpco.ir.HampaPlus", "urlText": "View on CafeBazaar", "icon": "fa-external-link-alt" },
+                        { "name": "Nearby Places Finder", "description": "Simple Flutter app using Foursquare API to find nearby locations.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/nearby_finder", "urlText": "View on GitHub", "icon": "fa-github" },
+                        { "name": "Flutter Chess Game", "description": "A complete chess game implemented using Flutter.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/flutter-chess-game", "urlText": "View on GitHub", "icon": "fa-github" },
+                        { "name": "Online Room Reservation App", "description": "Web application for booking rooms online.", "tags": ["ASP.NET Core", "Blazor"], "url": "https://panel.zaersarafatemiye.ir/", "urlText": "View Live", "icon": "fa-external-link-alt" }
+                    ],
+                    "courses": [
+                        "Flutter Course - Udemy (Maximilian)",
+                        "ASP.NET MVC Course - Toplearn",
+                        "ASP.NET Core Course - Toplearn",
+                        "Game Development with Unity - University of Isfahan"
+                    ]
+                }
             },
-            "main": {
-                "summary": "A dedicated and versatile software developer with experience in mobile development using Flutter and backend services with ASP.NET Core. Passionate about building clean, efficient applications and contributing to innovative projects in a collaborative team environment.",
-                "experience": [
-                    {
-                        "title": "Freelance Developer",
-                        "company": "Remote",
-                        "period": "April 2024 – Present",
-                        "description": ["Developing applications using .NET and Flutter for various clients."]
+            "fa": {
+                "title": "امیرحسین زمانی - رزومه",
+                "sidebar": {
+                    "personalInfo": {
+                        "name": "امیرحسین زمانی",
+                        "title": "توسعه‌دهنده نرم‌افزار",
+                        "imageUrl": "me.jpg"
                     },
-                    {
-                        "title": "Android Developer (Flutter)",
-                        "company": "Barnamenevisan Pasargad Co.",
-                        "period": "November 2022 – Present",
-                        "description": []
+                    "sections": {
+                        "contact": "اطلاعات تماس",
+                        "skills": "مهارت‌ها",
+                        "education": "تحصیلات",
+                        "languages": "زبان‌ها"
                     },
-                    {
-                        "title": "Game Developer (Unity)",
-                        "company": "Entertainment Industry Innovation Center, University of Isfahan",
-                        "period": "May 2022 – October 2022",
-                        "description": [
-                            "Developed games using the Unity engine.",
-                            "Contributed to the implementation of online game infrastructure with ASP.NET Core and RESTful APIs."
-                        ]
-                    }
-                ],
-                "projects": [
-                    {
-                        "name": "Planza - Goal & Task Manager",
-                        "description": "Android app for managing long-term goals, daily tasks, and habits.",
-                        "tags": ["Flutter"],
-                        "url": "https://github.com/Amir-Hzz79/planza",
-                        "urlText": "View on GitHub",
-                        "icon": "fa-github"
+                    "contact": {
+                        "email": "amirhosseinzamani454@gmail.com",
+                        "phone": "۰۹۳۹۱۸۲۷۵۹۹",
+                        "location": "اصفهان، ایران",
+                        "githubUrl": "https://github.com/Amir-Hzz79"
                     },
-                    {
-                        "name": "Hampa Plus Companion App",
-                        "description": "A mobile banking-style application for microfinance funds.",
-                        "tags": ["Flutter"],
-                        "url": "https://cafebazaar.ir/app/bnpco.ir.HampaPlus",
-                        "urlText": "View on CafeBazaar",
-                        "icon": "fa-external-link-alt"
+                    "skills": [
+                        { "category": "موبایل و فرانت‌اند", "technologies": ["Flutter", "Blazor", "HTML/CSS"] },
+                        { "category": "بک‌اند و پایگاه داده", "technologies": ["C#", "ASP.NET Core", "REST API", "Entity Framework", "MS SQL Server"] },
+                        { "category": "توسعه بازی", "technologies": ["Unity", "C++"] },
+                        { "category": "ابزارها و سایر", "technologies": ["Git", "Windows Forms"] }
+                    ],
+                    "education": {
+                        "degree": "کارشناسی مهندسی کامپیوتر",
+                        "university": "دانشگاه اصفهان",
+                        "years": "۱۳۹۱ – ۱۴۰۲"
                     },
-                    {
-                        "name": "Nearby Places Finder",
-                        "description": "Simple Flutter app using Foursquare API to find nearby locations.",
-                        "tags": ["Flutter"],
-                        "url": "https://github.com/Amir-Hzz79/nearby_finder",
-                        "urlText": "View on GitHub",
-                        "icon": "fa-github"
+                    "languages": [
+                        { "name": "فارسی", "proficiency": "زبان مادری" },
+                        { "name": "انگلیسی", "proficiency": "حرفه‌ای" }
+                    ]
+                },
+                "main": {
+                    "sections": {
+                        "summary": "خلاصه حرفه‌ای",
+                        "experience": "سوابق شغلی",
+                        "projects": "پروژه‌ها",
+                        "courses": "دوره‌های آموزشی"
                     },
-                    {
-                        "name": "Flutter Chess Game",
-                        "description": "A complete chess game implemented using Flutter.",
-                        "tags": ["Flutter"],
-                        "url": "https://github.com/Amir-Hzz79/flutter-chess-game",
-                        "urlText": "View on GitHub",
-                        "icon": "fa-github"
-                    },
-                    {
-                        "name": "Online Room Reservation App",
-                        "description": "Web application for booking rooms online.",
-                        "tags": ["ASP.NET Core", "Blazor"],
-                        "url": "https://panel.zaersarafatemiye.ir/",
-                        "urlText": "View Live",
-                        "icon": "fa-external-link-alt"
-                    }
-                ],
-                "courses": [
-                    "Flutter Course - Udemy (Maximilian)",
-                    "ASP.NET MVC Course - Toplearn",
-                    "ASP.NET Core Course - Toplearn",
-                    "Game Development with Unity - University of Isfahan"
-                ]
+                    "summary": "توسعه‌دهنده نرم‌افزار متعهد و همه‌کاره با تجربه در توسعه اپلیکیشن‌های موبایل با فلاتر و سرویس‌های بک‌اند با ASP.NET Core. علاقه‌مند به ساخت برنامه‌های تمیز و کارآمد و مشارکت در پروژه‌های نوآورانه در یک محیط تیمی.",
+                    "experience": [
+                        { "title": "توسعه‌دهنده فریلنسر", "company": "دورکاری", "period": "فروردین ۱۴۰۳ – تاکنون", "description": ["توسعه اپلیکیشن‌ها با استفاده از .NET و فلاتر برای مشتریان مختلف."] },
+                        { "title": "توسعه‌دهنده اندروید (فلاتر)", "company": "شرکت برنامه‌نویسان پاسارگاد", "period": "آبان ۱۴۰۱ – تاکنون", "description": [] },
+                        { "title": "توسعه‌دهنده بازی (یونیتی)", "company": "مرکز نوآوری صنعت سرگرمی، دانشگاه اصفهان", "period": "اردیبهشت ۱۴۰۱ – مهر ۱۴۰۱", "description": ["توسعه بازی‌ها با استفاده از موتور یونیتی.", "مشارکت در پیاده‌سازی زیرساخت بازی آنلاین با ASP.NET Core و RESTful API."] }
+                    ],
+                    "projects": [
+                        { "name": "پلنزا - مدیر اهداف و وظایف", "description": "اپلیکیشن اندروید برای مدیریت اهداف بلندمدت، وظایف روزانه و عادت‌ها.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/planza", "urlText": "مشاهده در گیت‌هاب", "icon": "fa-github" },
+                        { "name": "اپلیکیشن همراه همپا پلاس", "description": "یک اپلیکیشن موبایل به سبک بانکداری برای صندوق‌های قرض‌الحسنه.", "tags": ["Flutter"], "url": "https://cafebazaar.ir/app/bnpco.ir.HampaPlus", "urlText": "مشاهده در کافه‌بازار", "icon": "fa-external-link-alt" },
+                        { "name": "یابنده مکان‌های نزدیک", "description": "اپلیکیشن ساده فلاتر با استفاده از Foursquare API برای یافتن مکان‌های نزدیک.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/nearby_finder", "urlText": "مشاهده در گیت‌هاب", "icon": "fa-github" },
+                        { "name": "بازی شطرنج با فلاتر", "description": "یک بازی کامل شطرنج که با استفاده از فلاتر پیاده‌سازی شده است.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/flutter-chess-game", "urlText": "مشاهده در گیت‌هاب", "icon": "fa-github" },
+                        { "name": "اپلیکیشن رزرو آنلاین اتاق", "description": "اپلیکیشن وب برای رزرو آنلاین اتاق.", "tags": ["ASP.NET Core", "Blazor"], "url": "https://panel.zaersarafatemiye.ir/", "urlText": "مشاهده آنلاین", "icon": "fa-external-link-alt" }
+                    ],
+                    "courses": [
+                        "دوره فلاتر - یودمی (ماکسیمیلیان)",
+                        "دوره ASP.NET MVC - تاپ‌لرن",
+                        "دوره ASP.NET Core - تاپ‌لرن",
+                        "دوره توسعه بازی با یونیتی - دانشگاه اصفهان"
+                    ]
+                }
             }
         };
 
         document.addEventListener('DOMContentLoaded', () => {
-            // --- THEME SWITCHER LOGIC ---
             const themeSwitcher = document.getElementById('theme-switcher');
+            const languageSwitcher = document.getElementById('language-switcher');
             const html = document.documentElement;
-            const icon = themeSwitcher.querySelector('i');
 
+            // --- THEME SWITCHER LOGIC ---
+            const themeIcon = themeSwitcher.querySelector('i');
             const setTheme = (theme) => {
                 if (theme === 'dark') {
                     html.classList.add('dark');
-                    icon.classList.remove('fa-sun');
-                    icon.classList.add('fa-moon');
+                    themeIcon.classList.replace('fa-sun', 'fa-moon');
                     localStorage.setItem('theme', 'dark');
                 } else {
                     html.classList.remove('dark');
-                    icon.classList.remove('fa-moon');
-                    icon.classList.add('fa-sun');
+                    themeIcon.classList.replace('fa-moon', 'fa-sun');
                     localStorage.setItem('theme', 'light');
                 }
             };
-
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
 
             themeSwitcher.addEventListener('click', () => {
                 const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
                 setTheme(currentTheme === 'dark' ? 'light' : 'dark');
             });
 
-            // --- DYNAMIC CONTENT RENDERING ---
+            // Load saved theme or use system preference
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+            
+            // --- LANGUAGE SWITCHER LOGIC ---
+            let currentLang = localStorage.getItem('language') || 'en';
+
+            languageSwitcher.addEventListener('click', () => {
+                currentLang = (currentLang === 'en') ? 'fa' : 'en';
+                localStorage.setItem('language', currentLang);
+                updatePageLanguage(currentLang);
+            });
+
+            const updatePageLanguage = (lang) => {
+                html.lang = lang;
+                html.dir = (lang === 'fa') ? 'rtl' : 'ltr';
+                languageSwitcher.textContent = (lang === 'fa') ? 'EN' : 'FA';
+                document.title = translations[lang].title;
+                renderResume(lang);
+            };
+
+            updatePageLanguage(currentLang); // Initial render
+        });
+
+        function renderResume(lang) {
+            const resumeData = translations[lang];
             const sidebarCard = document.getElementById('sidebar-card');
             const mainContent = document.querySelector('main');
 
             // 1. Render Sidebar
-            const { personalInfo, contact, skills, education, languages } = resumeData.sidebar;
+            const { personalInfo, contact, skills, education, languages, sections: sidebarSections } = resumeData.sidebar;
             sidebarCard.innerHTML = `
                 <div class="profile-image-container mx-auto mb-6 w-36 h-36 rounded-full overflow-hidden ring-4 ring-[var(--text-accent)] ring-opacity-50">
-                    <img src="me.jpg" alt="${personalInfo.name}" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/144x144/374151/f9fafb?text=AZ';">
+                    <img src="${personalInfo.imageUrl}" alt="${personalInfo.name}" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/144x144/374151/f9fafb?text=AZ';">
                 </div>
                 <h1 class="text-3xl font-bold text-center" style="color: var(--text-accent);">${personalInfo.name}</h1>
                 <p class="text-center mt-2" style="color: var(--text-secondary);">${personalInfo.title}</p>
 
                 <div class="sidebar-section mt-8 pt-6 border-t" style="border-color: var(--border-color);">
-                    <h3 class="font-semibold mb-4 text-lg">Contact</h3>
+                    <h3 class="font-semibold mb-4 text-lg">${sidebarSections.contact}</h3>
                     <div class="space-y-4 text-sm">
                         <p class="flex items-start"><i class="fas fa-envelope fa-fw w-6 text-center mr-2 mt-1" style="color: var(--text-accent);"></i><a href="mailto:${contact.email}" class="contact-link">${contact.email}</a></p>
                         <p><i class="fas fa-phone fa-fw w-6 text-center mr-2" style="color: var(--text-accent);"></i><a href="tel:${contact.phone}" class="contact-link">${contact.phone}</a></p>
@@ -283,7 +333,7 @@
                 </div>
 
                 <div class="sidebar-section mt-8 pt-6 border-t" style="border-color: var(--border-color);">
-                    <h3 class="font-semibold mb-4 text-lg">Skills</h3>
+                    <h3 class="font-semibold mb-4 text-lg">${sidebarSections.skills}</h3>
                     <div class="space-y-4 text-sm">
                         ${skills.map(skillCategory => `
                             <div>
@@ -297,28 +347,28 @@
                 </div>
 
                 <div class="sidebar-section mt-8 pt-6 border-t" style="border-color: var(--border-color);">
-                    <h3 class="font-semibold mb-4 text-lg">Education</h3>
+                    <h3 class="font-semibold mb-4 text-lg">${sidebarSections.education}</h3>
                     <p class="font-bold text-sm">${education.degree}</p>
                     <p class="text-sm" style="color: var(--text-secondary);">${education.university}</p>
                     <p class="text-xs mt-1" style="color: var(--text-secondary);">${education.years}</p>
                 </div>
 
                 <div class="sidebar-section mt-8 pt-6 border-t" style="border-color: var(--border-color);">
-                    <h3 class="font-semibold mb-4 text-lg">Languages</h3>
+                    <h3 class="font-semibold mb-4 text-lg">${sidebarSections.languages}</h3>
                     ${languages.map(lang => `<p class="text-sm"><strong class="font-medium">${lang.name}:</strong> ${lang.proficiency}</p>`).join('')}
                 </div>
             `;
 
             // 2. Render Main Content
-            const { summary, experience, projects, courses } = resumeData.main;
+            const { summary, experience, projects, courses, sections: mainSections } = resumeData.main;
             mainContent.innerHTML = `
                 <section>
-                    <h2 class="text-2xl font-semibold mb-6 section-title"><i class="fas fa-user-tie mr-3"></i>Professional Summary</h2>
+                    <h2 class="text-2xl font-semibold mb-6 section-title"><i class="fas fa-user-tie mr-3"></i>${mainSections.summary}</h2>
                     <div class="resume-card p-8"><p class="leading-relaxed text-lg" style="color: var(--text-secondary);">${summary}</p></div>
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-semibold mb-6 section-title"><i class="fas fa-briefcase mr-3"></i>Work Experience</h2>
+                    <h2 class="text-2xl font-semibold mb-6 section-title"><i class="fas fa-briefcase mr-3"></i>${mainSections.experience}</h2>
                     <div class="experience-wrapper space-y-8">
                         ${experience.map(job => `
                             <div class="resume-card p-8">
@@ -336,7 +386,7 @@
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-semibold mb-6 section-title"><i class="fas fa-project-diagram mr-3"></i>Projects</h2>
+                    <h2 class="text-2xl font-semibold mb-6 section-title"><i class="fas fa-project-diagram mr-3"></i>${mainSections.projects}</h2>
                     <div class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-8">
                         ${projects.map(project => `
                             <div class="resume-card p-6 flex flex-col">
@@ -354,7 +404,7 @@
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-semibold mb-6 section-title"><i class="fas fa-certificate mr-3"></i>Courses</h2>
+                    <h2 class="text-2xl font-semibold mb-6 section-title"><i class="fas fa-certificate mr-3"></i>${mainSections.courses}</h2>
                     <div class="resume-card p-8">
                         <ul class="list-disc list-inside space-y-2" style="color: var(--text-secondary);">
                             ${courses.map(course => `<li>${course}</li>`).join('')}
@@ -362,8 +412,7 @@
                     </div>
                 </section>
             `;
-        });
+        }
     </script>
-
 </body>
 </html>
