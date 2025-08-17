@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="dark"> <!-- Default to dark theme -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,22 +13,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --bg-primary: #f3f4f6; /* gray-100 */
-            --bg-secondary: #ffffff; /* white */
-            --text-primary: #1f2937; /* gray-800 */
-            --text-secondary: #4b5563; /* gray-600 */
-            --text-accent: #059669; /* green-600 */
-            --border-color: #d1d5db; /* gray-300 */
+            --bg-primary: #f3f4f6;
+            /* gray-100 */
+            --bg-secondary: #ffffff;
+            /* white */
+            --text-primary: #1f2937;
+            /* gray-800 */
+            --text-secondary: #4b5563;
+            /* gray-600 */
+            --text-accent: #059669;
+            /* green-600 */
+            --border-color: #d1d5db;
+            /* gray-300 */
             --shadow-color: rgba(17, 12, 46, 0.1);
         }
 
         html.dark {
-            --bg-primary: #111827; /* gray-900 */
-            --bg-secondary: #1f2937; /* gray-800 */
-            --text-primary: #f9fafb; /* gray-50 */
-            --text-secondary: #9ca3af; /* gray-400 */
-            --text-accent: #34d399; /* green-400 */
-            --border-color: #374151; /* gray-700 */
+            --bg-primary: #111827;
+            /* gray-900 */
+            --bg-secondary: #1f2937;
+            /* gray-800 */
+            --text-primary: #f9fafb;
+            /* gray-50 */
+            --text-secondary: #9ca3af;
+            /* gray-400 */
+            --text-accent: #34d399;
+            /* green-400 */
+            --border-color: #374151;
+            /* gray-700 */
             --shadow-color: rgba(0, 0, 0, 0.2);
         }
 
@@ -37,7 +50,7 @@
             color: var(--text-primary);
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-        
+
         /* Apply Vazirmatn font for Farsi */
         html[lang="fa"] body {
             font-family: 'Vazirmatn', sans-serif;
@@ -45,10 +58,11 @@
 
         .resume-card {
             background-color: var(--bg-secondary);
-            border-radius: 0.75rem; /* rounded-xl */
+            border-radius: 0.75rem;
+            /* rounded-xl */
             box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -1px var(--shadow-color);
         }
-        
+
         .section-title {
             border-bottom-width: 2px;
             border-color: var(--border-color);
@@ -60,6 +74,7 @@
             transition: color 0.3s;
             word-break: break-all;
         }
+
         .contact-link:hover {
             color: var(--text-accent);
         }
@@ -81,28 +96,46 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            font-weight: 600; /* Make font bolder for EN/FA text */
+            font-weight: 600;
+            /* Make font bolder for EN/FA text */
         }
+
         .action-button:hover {
             color: var(--text-accent);
             border-color: var(--text-accent);
         }
 
         /* RTL adjustments for icons */
-        html[lang="fa"] .mr-2 { margin-left: 0.5rem; margin-right: 0; }
-        html[lang="fa"] .mr-3 { margin-left: 0.75rem; margin-right: 0; }
-        html[lang="fa"] .ml-1 { margin-right: 0.25rem; margin-left: 0; }
-        html[lang="fa"] .list-disc { padding-right: 2rem; }
+        html[lang="fa"] .mr-2 {
+            margin-left: 0.5rem;
+            margin-right: 0;
+        }
+
+        html[lang="fa"] .mr-3 {
+            margin-left: 0.75rem;
+            margin-right: 0;
+        }
+
+        html[lang="fa"] .ml-1 {
+            margin-right: 0.25rem;
+            margin-left: 0;
+        }
+
+        html[lang="fa"] .list-disc {
+            padding-right: 2rem;
+        }
     </style>
 </head>
+
 <body class="antialiased">
 
     <!-- Action Buttons -->
     <!-- The dir="ltr" attribute is added here to prevent the buttons from swapping positions in RTL mode -->
     <div class="action-buttons fixed top-4 right-4 z-50 flex gap-2" dir="ltr">
-        <button id="language-switcher" class="action-button" aria-label="Toggle Language" title="Toggle Language"></button>
+        <button id="language-switcher" class="action-button" aria-label="Toggle Language"
+            title="Toggle Language"></button>
         <button id="theme-switcher" class="action-button" aria-label="Toggle theme" title="Toggle Theme">
             <i class="fas fa-sun text-lg"></i>
         </button>
@@ -114,7 +147,8 @@
 
             <!-- === SIDEBAR === -->
             <aside class="lg:col-span-1 lg:sticky top-8 space-y-8 h-full">
-                <div id="sidebar-card" class="sidebar-card p-8 rounded-xl" style="background-color: var(--bg-secondary); box-shadow: 0 4px 6px -1px var(--shadow-color);">
+                <div id="sidebar-card" class="sidebar-card p-8 rounded-xl"
+                    style="background-color: var(--bg-secondary); box-shadow: 0 4px 6px -1px var(--shadow-color);">
                     <!-- Profile content will be injected here -->
                 </div>
             </aside>
@@ -125,7 +159,7 @@
             </main>
         </div>
     </div>
-    
+
     <!-- RENDER SCRIPT -->
     <script>
         const translations = {
@@ -179,11 +213,11 @@
                         { "title": "Game Developer (Unity)", "company": "Entertainment Industry Innovation Center, University of Isfahan", "period": "May 2022 – October 2022", "description": ["Developed games using the Unity engine.", "Contributed to the implementation of online game infrastructure with ASP.NET Core and RESTful APIs."] }
                     ],
                     "projects": [
-                        { "name": "Planza - Goal & Task Manager", "description": "Android app for managing long-term goals, daily tasks, and habits.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/planza", "urlText": "View on GitHub", "icon": "fa-github" },
-                        { "name": "Hampa Plus Companion App", "description": "A mobile banking-style application for microfinance funds.", "tags": ["Flutter"], "url": "https://cafebazaar.ir/app/bnpco.ir.HampaPlus", "urlText": "View on CafeBazaar", "icon": "fa-external-link-alt" },
-                        { "name": "Nearby Places Finder", "description": "Simple Flutter app using Foursquare API to find nearby locations.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/nearby_finder", "urlText": "View on GitHub", "icon": "fa-github" },
-                        { "name": "Flutter Chess Game", "description": "A complete chess game implemented using Flutter.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/flutter-chess-game", "urlText": "View on GitHub", "icon": "fa-github" },
-                        { "name": "Online Room Reservation App", "description": "Web application for booking rooms online.", "tags": ["ASP.NET Core", "Blazor"], "url": "https://panel.zaersarafatemiye.ir/", "urlText": "View Live", "icon": "fa-external-link-alt" }
+                        { "name": "Planza - Goal & Task Manager", "description": "Android app for managing long-term goals, daily tasks, and habits.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/planza", "urlText": "View on GitHub", "icon": "fab fa-github" },
+                        { "name": "Hampa Plus Companion App", "description": "A mobile banking-style application for microfinance funds.", "tags": ["Flutter"], "url": "https://cafebazaar.ir/app/bnpco.ir.HampaPlus", "urlText": "View on CafeBazaar", "icon": "fas fa-external-link-alt" },
+                        { "name": "Nearby Places Finder", "description": "Simple Flutter app using Foursquare API to find nearby locations.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/nearby_finder", "urlText": "View on GitHub", "icon": "fab fa-github" },
+                        { "name": "Flutter Chess Game", "description": "A complete chess game implemented using Flutter.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/flutter-chess-game", "urlText": "View on GitHub", "icon": "fab fa-github" },
+                        { "name": "Online Room Reservation App", "description": "Web application for booking rooms online.", "tags": ["ASP.NET Core", "Blazor"], "url": "https://panel.zaersarafatemiye.ir/", "urlText": "View Live", "icon": "fas fa-external-link-alt" }
                     ],
                     "courses": [
                         "Flutter Course - Udemy (Maximilian)",
@@ -243,11 +277,11 @@
                         { "title": "توسعه‌دهنده بازی (یونیتی)", "company": "مرکز نوآوری صنعت سرگرمی، دانشگاه اصفهان", "period": "اردیبهشت ۱۴۰۱ – مهر ۱۴۰۱", "description": ["توسعه بازی‌ها با استفاده از موتور یونیتی.", "مشارکت در پیاده‌سازی زیرساخت بازی آنلاین با ASP.NET Core و RESTful API."] }
                     ],
                     "projects": [
-                        { "name": "پلنزا - مدیر اهداف و وظایف", "description": "اپلیکیشن اندروید برای مدیریت اهداف بلندمدت، وظایف روزانه و عادت‌ها.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/planza", "urlText": "مشاهده در گیت‌هاب", "icon": "fa-github" },
-                        { "name": "اپلیکیشن همراه همپا پلاس", "description": "یک اپلیکیشن موبایل به سبک بانکداری برای صندوق‌های قرض‌الحسنه.", "tags": ["Flutter"], "url": "https://cafebazaar.ir/app/bnpco.ir.HampaPlus", "urlText": "مشاهده در کافه‌بازار", "icon": "fa-external-link-alt" },
-                        { "name": "یابنده مکان‌های نزدیک", "description": "اپلیکیشن ساده فلاتر با استفاده از Foursquare API برای یافتن مکان‌های نزدیک.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/nearby_finder", "urlText": "مشاهده در گیت‌هاب", "icon": "fa-github" },
-                        { "name": "بازی شطرنج با فلاتر", "description": "یک بازی کامل شطرنج که با استفاده از فلاتر پیاده‌سازی شده است.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/flutter-chess-game", "urlText": "مشاهده در گیت‌هاب", "icon": "fa-github" },
-                        { "name": "اپلیکیشن رزرو آنلاین اتاق", "description": "اپلیکیشن وب برای رزرو آنلاین اتاق.", "tags": ["ASP.NET Core", "Blazor"], "url": "https://panel.zaersarafatemiye.ir/", "urlText": "مشاهده آنلاین", "icon": "fa-external-link-alt" }
+                        { "name": "پلنزا - مدیر اهداف و وظایف", "description": "اپلیکیشن اندروید برای مدیریت اهداف بلندمدت، وظایف روزانه و عادت‌ها.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/planza", "urlText": "مشاهده در گیت‌هاب", "icon": "fab fa-github" },
+                        { "name": "اپلیکیشن همراه همپا پلاس", "description": "یک اپلیکیشن موبایل به سبک بانکداری برای صندوق‌های قرض‌الحسنه.", "tags": ["Flutter"], "url": "https://cafebazaar.ir/app/bnpco.ir.HampaPlus", "urlText": "مشاهده در کافه‌بازار", "icon": "fas fa-external-link-alt" },
+                        { "name": "یابنده مکان‌های نزدیک", "description": "اپلیکیشن ساده فلاتر با استفاده از Foursquare API برای یافتن مکان‌های نزدیک.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/nearby_finder", "urlText": "مشاهده در گیت‌هاب", "icon": "fab fa-github" },
+                        { "name": "بازی شطرنج با فلاتر", "description": "یک بازی کامل شطرنج که با استفاده از فلاتر پیاده‌سازی شده است.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/flutter-chess-game", "urlText": "مشاهده در گیت‌هاب", "icon": "fab fa-github" },
+                        { "name": "اپلیکیشن رزرو آنلاین اتاق", "description": "اپلیکیشن وب برای رزرو آنلاین اتاق.", "tags": ["ASP.NET Core", "Blazor"], "url": "https://panel.zaersarafatemiye.ir/", "urlText": "مشاهده آنلاین", "icon": "fas fa-external-link-alt" }
                     ],
                     "courses": [
                         "دوره فلاتر - یودمی (ماکسیمیلیان)",
@@ -287,7 +321,7 @@
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
-            
+
             // --- LANGUAGE SWITCHER LOGIC ---
             // Function to determine the initial language
             const getInitialLang = () => {
@@ -411,7 +445,7 @@
                                 </div>
                                 <div class="mt-4 flex justify-between items-center">
                                     <div>${project.tags.map(tag => `<span class="skill-tag text-xs px-2 py-1 rounded-full">${tag}</span>`).join(' ')}</div>
-                                    <a href="${project.url}" class="contact-link text-sm" target="_blank">${project.urlText} <i class="fas ${project.icon} ml-1"></i></a>
+                                    <a href="${project.url}" class="contact-link text-sm" target="_blank">${project.urlText} <i class="${project.icon} ml-1"></i></a>
                                 </div>
                             </div>
                         `).join('')}
@@ -430,4 +464,5 @@
         }
     </script>
 </body>
+
 </html>
