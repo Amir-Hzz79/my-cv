@@ -190,27 +190,76 @@
     
     <!-- RENDER SCRIPT -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Fetch the resume data from the JSON file
-            fetch('resume-data.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok ' + response.statusText);
-                    }
-                    return response.json();
-                })
-                .then(translations => {
-                    // All the logic that depends on the data goes here
-                    initializeApp(translations);
-                })
-                .catch(error => {
-                    console.error('There has been a problem with your fetch operation:', error);
-                    // Optionally, display an error message to the user on the page
-                    document.body.innerHTML = `<div class="text-center p-8 text-red-500">Failed to load resume data. Please check the console for errors.</div>`;
-                });
-        });
+        const translations = {
+            "en": {
+                "title": "Amirhossein Zamani - Resume",
+                "sidebar": {
+                    "personalInfo": { "name": "Amirhossein Zamani", "title": "Software Developer", "imageUrl": "me.jpg" },
+                    "sections": { "contact": "Contact", "skills": "Skills", "education": "Education", "languages": "Languages" },
+                    "contact": { "email": "amirhosseinzamani454@gmail.com", "phone": "09391827599", "location": "Isfahan, Iran", "githubUrl": "https://github.com/Amir-Hzz79", "telegram": "https://t.me/Amir_Hzz79" },
+                    "skills": [
+                        { "category": "Mobile & Frontend", "technologies": ["Flutter", "Blazor", "HTML/CSS"] },
+                        { "category": "Backend & Database", "technologies": ["C#", "ASP.NET Core", "REST API", "Entity Framework", "MS SQL Server"] },
+                        { "category": "Game Development", "technologies": ["Unity", "C++"] },
+                        { "category": "Tools & Other", "technologies": ["Git", "Windows Forms"] }
+                    ],
+                    "education": { "degree": "BS in Computer Engineering", "university": "University of Isfahan", "years": "2012 – 2023" },
+                    "languages": [ { "name": "Persian", "proficiency": "Native" }, { "name": "English", "proficiency": "Professional" } ]
+                },
+                "main": {
+                    "sections": { "summary": "Summary", "experience": "Work Experience", "projects": "Projects", "courses": "Courses" },
+                    "summary": "A dedicated and versatile software developer with experience in mobile development using Flutter and backend services with ASP.NET Core. Passionate about building clean, efficient applications and contributing to innovative projects in a collaborative team environment.",
+                    "experience": [
+                        { "title": "Freelance Developer", "company": "Remote", "period": "April 2024 – Present", "description": ["Developing applications using .NET and Flutter for various clients."] },
+                        { "title": "Android Developer (Flutter)", "company": "Barnamenevisan Pasargad Co.", "period": "November 2022 – Present", "description": [] },
+                        { "title": "Game Developer (Unity)", "company": "Entertainment Industry Innovation Center, University of Isfahan", "period": "May 2022 – October 2022", "description": ["Developed games using the Unity engine.", "Contributed to the implementation of online game infrastructure with ASP.NET Core and RESTful APIs."] }
+                    ],
+                    "projects": [
+                        { "name": "Planza - Goal & Task Manager", "description": "Android app for managing long-term goals, daily tasks, and habits.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/planza", "urlText": "View on GitHub", "icon": "fab fa-github" },
+                        { "name": "Hampa Plus Companion App", "description": "A mobile banking-style application for microfinance funds.", "tags": ["Flutter"], "url": "https://cafebazaar.ir/app/bnpco.ir.HampaPlus", "urlText": "View on CafeBazaar", "icon": "fas fa-external-link-alt" },
+                        { "name": "Nearby Places Finder", "description": "Simple Flutter app using Foursquare API to find nearby locations.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/nearby_finder", "urlText": "View on GitHub", "icon": "fab fa-github" },
+                        { "name": "Flutter Chess Game", "description": "A complete chess game implemented using Flutter.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/flutter-chess-game", "urlText": "View on GitHub", "icon": "fab fa-github" },
+                        { "name": "Online Room Reservation App", "description": "Web application for booking rooms online.", "tags": ["ASP.NET Core", "Blazor"], "url": "https://panel.zaersarafatemiye.ir/", "urlText": "View Live", "icon": "fas fa-external-link-alt" }
+                    ],
+                    "courses": [ "Flutter Course - Udemy (Maximilian)", "ASP.NET MVC Course - Toplearn", "ASP.NET Core Course - Toplearn", "Game Development with Unity - University of Isfahan" ]
+                }
+            },
+            "fa": {
+                "title": "امیرحسین زمانی - رزومه",
+                "sidebar": {
+                    "personalInfo": { "name": "امیرحسین زمانی", "title": "توسعه‌دهنده نرم‌افزار", "imageUrl": "me.jpg" },
+                    "sections": { "contact": "اطلاعات تماس", "skills": "مهارت‌ها", "education": "تحصیلات", "languages": "زبان‌ها" },
+                    "contact": { "email": "amirhosseinzamani454@gmail.com", "phone": "۰۹۳۹۱۸۲۷۵۹۹", "location": "اصفهان، ایران", "githubUrl": "https://github.com/Amir-Hzz79", "telegram": "https://t.me/Amir_Hzz79" },
+                    "skills": [
+                        { "category": "موبایل و فرانت‌اند", "technologies": ["Flutter", "Blazor", "HTML/CSS"] },
+                        { "category": "بک‌اند و پایگاه داده", "technologies": ["C#", "ASP.NET Core", "REST API", "Entity Framework", "MS SQL Server"] },
+                        { "category": "توسعه بازی", "technologies": ["Unity", "C++"] },
+                        { "category": "ابزارها و سایر", "technologies": ["Git", "Windows Forms"] }
+                    ],
+                    "education": { "degree": "کارشناسی مهندسی کامپیوتر", "university": "دانشگاه اصفهان", "years": "۱۳۹۱ – ۱۴۰۲" },
+                    "languages": [ { "name": "فارسی", "proficiency": "زبان مادری" }, { "name": "انگلیسی", "proficiency": "حرفه‌ای" } ]
+                },
+                "main": {
+                    "sections": { "summary": "خلاصه", "experience": "سوابق شغلی", "projects": "پروژه‌ها", "courses": "دوره‌های آموزشی" },
+                    "summary": "توسعه‌دهنده نرم‌افزار متعهد و همه‌کاره با تجربه در توسعه اپلیکیشن‌های موبایل با فلاتر و سرویس‌های بک‌اند با ASP.NET Core. علاقه‌مند به ساخت برنامه‌های تمیز و کارآمد و مشارکت در پروژه‌های نوآورانه در یک محیط تیمی.",
+                    "experience": [
+                        { "title": "توسعه‌دهنده فریلنسر", "company": "دورکاری", "period": "فروردین ۱۴۰۳ – تاکنون", "description": ["توسعه اپلیکیشن‌ها با استفاده از .NET و فلاتر برای مشتریان مختلف."] },
+                        { "title": "توسعه‌دهنده اندروید (فلاتر)", "company": "شرکت برنامه‌نویسان پاسارگاد", "period": "آبان ۱۴۰۱ – تاکنون", "description": [] },
+                        { "title": "توسعه‌دهنده بازی (یونیتی)", "company": "مرکز نوآوری صنعت سرگرمی، دانشگاه اصفهان", "period": "اردیبهشت ۱۴۰۱ – مهر ۱۴۰۱", "description": ["توسعه بازی‌ها با استفاده از موتور یونیتی.", "مشارکت در پیاده‌سازی زیرساخت بازی آنلاین با ASP.NET Core و RESTful API."] }
+                    ],
+                    "projects": [
+                        { "name": "پلنزا - مدیر اهداف و وظایف", "description": "اپلیکیشن اندروید برای مدیریت اهداف بلندمدت، وظایف روزانه و عادت‌ها.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/planza", "urlText": "مشاهده در گیت‌هاب", "icon": "fab fa-github" },
+                        { "name": "اپلیکیشن همراه همپا پلاس", "description": "یک اپلیکیشن موبایل به سبک بانکداری برای صندوق‌های قرض‌الحسنه.", "tags": ["Flutter"], "url": "https://cafebazaar.ir/app/bnpco.ir.HampaPlus", "urlText": "مشاهده در کافه‌بازار", "icon": "fas fa-external-link-alt" },
+                        { "name": "یابنده مکان‌های نزدیک", "description": "اپلیکیشن ساده فلاتر با استفاده از Foursquare API برای یافتن مکان‌های نزدیک.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/nearby_finder", "urlText": "مشاهده در گیت‌هاب", "icon": "fab fa-github" },
+                        { "name": "بازی شطرنج با فلاتر", "description": "یک بازی کامل شطرنج که با استفاده از فلاتر پیاده‌سازی شده است.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/flutter-chess-game", "urlText": "مشاهده در گیت‌هاب", "icon": "fab fa-github" },
+                        { "name": "اپلیکیشن رزرو آنلاین اتاق", "description": "اپلیکیشن وب برای رزرو آنلاین اتاق.", "tags": ["ASP.NET Core", "Blazor"], "url": "https://panel.zaersarafatemiye.ir/", "urlText": "مشاهده آنلاین", "icon": "fas fa-external-link-alt" }
+                    ],
+                    "courses": [ "دوره فلاتر - یودمی (ماکسیمیلیان)", "دوره ASP.NET MVC - تاپ‌لرن", "دوره ASP.NET Core - تاپ‌لرن", "دوره توسعه بازی با یونیتی - دانشگاه اصفهان" ]
+                }
+            }
+        };
 
-        function initializeApp(translations) {
+        document.addEventListener('DOMContentLoaded', () => {
             const themeSwitcher = document.getElementById('theme-switcher');
             const languageSwitcher = document.getElementById('language-switcher');
             const html = document.documentElement;
@@ -254,7 +303,7 @@
                 html.dir = (lang === 'fa') ? 'rtl' : 'ltr';
                 languageSwitcher.innerHTML = (lang === 'fa') ? '<span class="font-bold text-sm">FA</span>' : '<span class="font-bold text-sm">EN</span>';
                 document.title = translations[lang].title;
-                renderResume(lang, translations);
+                renderResume(lang);
             };
             updatePageLanguage(currentLang);
 
@@ -267,7 +316,6 @@
                 'ASP.NET Core': 'fas fa-server', 'REST API': 'fas fa-network-wired', 'Game Development': 'fas fa-gamepad'
             };
             let currentSkillIndex = 0;
-            let animationInterval;
 
             function createShapes() {
                 backgroundContainer.innerHTML = '';
@@ -293,13 +341,11 @@
                 currentSkillIndex = (currentSkillIndex + 9) % allSkills.length;
             }
 
-            // Clear any existing interval before setting a new one
-            if (animationInterval) clearInterval(animationInterval);
             createShapes();
-            animationInterval = setInterval(createShapes, 8000); // Change skills every 8 seconds
-        }
+            setInterval(createShapes, 8000); // Change skills every 8 seconds
+        });
 
-        function renderResume(lang, translations) {
+        function renderResume(lang) {
             const resumeData = translations[lang];
             const sidebarCard = document.getElementById('sidebar-card');
             const mainContent = document.querySelector('main');
@@ -319,7 +365,7 @@
                         <p><i class="fas fa-phone fa-fw w-6 text-center mr-2" style="color: var(--text-accent);"></i><a href="tel:${contact.phone}" class="contact-link">${contact.phone}</a></p>
                         <p><i class="fas fa-map-marker-alt fa-fw w-6 text-center mr-2" style="color: var(--text-accent);"></i>${contact.location}</p>
                         <p class="flex items-start"><i class="fab fa-github fa-fw w-6 text-center mr-2 mt-1" style="color: var(--text-accent);"></i><a href="${contact.githubUrl}" target="_blank" class="contact-link">${contact.githubUrl.replace('https://', '')}</a></p>
-                        <p class="flex items-start"><i class="fab fa-telegram fa-fw w-6 text-center mr-2 mt-1" style="color: var(--text-accent);"></i><a href="${contact.telegram}" target="_blank" class="contact-link">${contact.telegram.replace('https.t.me/', '@')}</a></p>
+                        <p class="flex items-start"><i class="fab fa-telegram fa-fw w-6 text-center mr-2 mt-1" style="color: var(--text-accent);"></i><a href="${contact.telegram}" target="_blank" class="contact-link">${contact.telegram.replace('https://t.me/', '@')}</a></p>
                     </div>
                 </div>
                 <div class="sidebar-section mt-8 pt-6 border-t" style="border-color: var(--border-color);">
