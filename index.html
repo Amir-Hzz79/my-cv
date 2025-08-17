@@ -283,13 +283,27 @@
                 setTheme(currentTheme === 'dark' ? 'light' : 'dark');
             });
 
-            // Load saved theme or use system preference
+            // Load saved theme or use system preference as a fallback
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
             
             // --- LANGUAGE SWITCHER LOGIC ---
-            let currentLang = localStorage.getItem('language') || 'en';
+            // Function to determine the initial language
+            const getInitialLang = () => {
+                const savedLang = localStorage.getItem('language');
+                if (savedLang) {
+                    return savedLang;
+                }
+                // 'fa-IR' -> 'fa'
+                const browserLang = navigator.language.split('-')[0];
+                if (browserLang === 'fa') {
+                    return 'fa';
+                }
+                return 'en';
+            };
+
+            let currentLang = getInitialLang();
 
             languageSwitcher.addEventListener('click', () => {
                 currentLang = (currentLang === 'en') ? 'fa' : 'en';
@@ -300,7 +314,8 @@
             const updatePageLanguage = (lang) => {
                 html.lang = lang;
                 html.dir = (lang === 'fa') ? 'rtl' : 'ltr';
-                languageSwitcher.textContent = (lang === 'fa') ? 'EN' : 'FA';
+                // Update button to show the CURRENT language
+                languageSwitcher.innerHTML = (lang === 'fa') ? '<span class="font-bold text-sm">FA</span>' : '<span class="font-bold text-sm">EN</span>';
                 document.title = translations[lang].title;
                 renderResume(lang);
             };
