@@ -1,33 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" class="dark"> <!-- Default to dark theme -->
+<html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amirhossein Zamani - Resume</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font for Farsi -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --bg-primary: #f3f4f6; /* gray-100 */
-            --bg-secondary: #ffffff; /* white */
-            --text-primary: #1f2937; /* gray-800 */
-            --text-secondary: #4b5563; /* gray-600 */
-            --text-accent: #059669; /* green-600 */
-            --border-color: #d1d5db; /* gray-300 */
+            --bg-primary: #f3f4f6;
+            /* gray-100 */
+            --bg-secondary: #ffffff;
+            /* white */
+            --text-primary: #1f2937;
+            /* gray-800 */
+            --text-secondary: #4b5563;
+            /* gray-600 */
+            --text-accent: #059669;
+            /* green-600 */
+            --border-color: #d1d5db;
+            /* gray-300 */
             --shadow-color: rgba(17, 12, 46, 0.1);
         }
 
         html.dark {
-            --bg-primary: #111827; /* gray-900 */
-            --bg-secondary: #1f2937; /* gray-800 */
-            --text-primary: #f9fafb; /* gray-50 */
-            --text-secondary: #9ca3af; /* gray-400 */
-            --text-accent: #34d399; /* green-400 */
-            --border-color: #374151; /* gray-700 */
+            --bg-primary: #111827;
+            /* gray-900 */
+            --bg-secondary: #1f2937;
+            /* gray-800 */
+            --text-primary: #f9fafb;
+            /* gray-50 */
+            --text-secondary: #9ca3af;
+            /* gray-400 */
+            --text-accent: #34d399;
+            /* green-400 */
+            --border-color: #374151;
+            /* gray-700 */
             --shadow-color: rgba(0, 0, 0, 0.2);
         }
 
@@ -36,9 +47,10 @@
             background-color: var(--bg-primary);
             color: var(--text-primary);
             transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: hidden; /* Prevent horizontal scroll from shapes */
+            overflow-x: hidden;
+            /* Prevent horizontal scroll from shapes */
         }
-        
+
         /* Apply Vazirmatn font for Farsi */
         html[lang="fa"] body {
             font-family: 'Vazirmatn', sans-serif;
@@ -46,17 +58,19 @@
 
         .resume-card {
             background-color: var(--bg-secondary);
-            border-radius: 0.75rem; /* rounded-xl */
+            border-radius: 0.75rem;
+            /* rounded-xl */
             box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -1px var(--shadow-color);
             position: relative;
             z-index: 10;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .resume-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 10px -1px var(--shadow-color), 0 2.5px 5px -1px var(--shadow-color);
         }
-        
+
         .section-title {
             border-bottom-width: 2px;
             border-color: var(--border-color);
@@ -68,6 +82,7 @@
             transition: color 0.3s;
             word-break: break-all;
         }
+
         .contact-link:hover {
             color: var(--text-accent);
         }
@@ -78,6 +93,7 @@
             font-weight: 500;
             transition: background-color 0.2s ease, color 0.2s ease;
         }
+
         .skill-tag:hover {
             background-color: var(--text-accent);
             color: var(--bg-secondary);
@@ -94,10 +110,12 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            font-weight: 600; /* Make font bolder for EN/FA text */
+            font-weight: 600;
+            /* Make font bolder for EN/FA text */
         }
+
         .action-button:hover {
             color: var(--text-accent);
             border-color: var(--text-accent);
@@ -105,10 +123,24 @@
         }
 
         /* RTL adjustments for icons */
-        html[lang="fa"] .mr-2 { margin-left: 0.5rem; margin-right: 0; }
-        html[lang="fa"] .mr-3 { margin-left: 0.75rem; margin-right: 0; }
-        html[lang="fa"] .ml-1 { margin-right: 0.25rem; margin-left: 0; }
-        html[lang="fa"] .list-disc { padding-right: 2rem; }
+        html[lang="fa"] .mr-2 {
+            margin-left: 0.5rem;
+            margin-right: 0;
+        }
+
+        html[lang="fa"] .mr-3 {
+            margin-left: 0.75rem;
+            margin-right: 0;
+        }
+
+        html[lang="fa"] .ml-1 {
+            margin-right: 0.25rem;
+            margin-left: 0;
+        }
+
+        html[lang="fa"] .list-disc {
+            padding-right: 2rem;
+        }
 
         /* Styles for collapsible sections */
         .collapsible-content {
@@ -116,12 +148,16 @@
             overflow: hidden;
             transition: max-height 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
+
         .collapsible-section.open .collapsible-content {
-            max-height: 2000px; /* Large enough value to fit content */
+            max-height: 2000px;
+            /* Large enough value to fit content */
         }
+
         .collapsible-section .section-title .toggle-icon {
             transition: transform 0.3s ease;
         }
+
         .collapsible-section.open .section-title .toggle-icon {
             transform: rotate(180deg);
         }
@@ -136,59 +172,66 @@
             z-index: 0;
             pointer-events: none;
         }
+
         .shape {
             position: absolute;
             color: var(--text-accent);
-            opacity: 0; /* Set initial opacity to 0 to prevent flash */
+            opacity: 0;
+            /* Set initial opacity to 0 to prevent flash */
             animation-name: float;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
         }
+
         .shape.text-shape {
             font-weight: 700;
         }
 
         @keyframes float {
-            0% { transform: translateY(5vh) rotate(0deg); opacity: 0; }
-            15%, 85% { opacity: 0.1; }
-            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+            0% {
+                transform: translateY(5vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            15%,
+            85% {
+                opacity: 0.1;
+            }
+
+            100% {
+                transform: translateY(-20vh) rotate(360deg);
+                opacity: 0;
+            }
         }
     </style>
 </head>
+
 <body class="antialiased">
 
-    <!-- Animated Background -->
     <div class="background-shapes">
-        <!-- Shapes will be generated by JavaScript -->
     </div>
 
-    <!-- Action Buttons -->
     <div class="action-buttons fixed top-4 right-4 z-50 flex gap-2" dir="ltr">
-        <button id="language-switcher" class="action-button" aria-label="Toggle Language" title="Toggle Language"></button>
+        <button id="language-switcher" class="action-button" aria-label="Toggle Language"
+            title="Toggle Language"></button>
         <button id="theme-switcher" class="action-button" aria-label="Toggle theme" title="Toggle Theme">
             <i class="fas fa-sun text-lg"></i>
         </button>
     </div>
 
-    <!-- Main container -->
     <div id="resume-content" class="container mx-auto max-w-7xl p-4 sm:p-6 lg:p-8 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
 
-            <!-- === SIDEBAR === -->
             <aside class="lg:col-span-1 lg:sticky top-8 space-y-8 h-full">
                 <div id="sidebar-card" class="resume-card p-8 rounded-xl">
-                    <!-- Profile content will be injected here -->
                 </div>
             </aside>
 
-            <!-- === MAIN CONTENT === -->
             <main class="lg:col-span-3 space-y-12">
-                <!-- Summary, Experience, Projects, Courses will be injected here -->
             </main>
         </div>
     </div>
-    
-    <!-- RENDER SCRIPT -->
+
     <script>
         const translations = {
             "en": {
@@ -198,21 +241,21 @@
                     "sections": { "contact": "Contact", "skills": "Skills", "education": "Education", "languages": "Languages" },
                     "contact": { "email": "amirhosseinzamani454@gmail.com", "phone": "09391827599", "location": "Isfahan, Iran", "githubUrl": "https://github.com/Amir-Hzz79", "telegram": "https://t.me/Amir_Hzz79" },
                     "skills": [
-                        { "category": "Mobile & Frontend", "technologies": ["Flutter", "Blazor", "HTML/CSS"] },
                         { "category": "Backend & Database", "technologies": ["C#", "ASP.NET Core", "REST API", "Entity Framework", "MS SQL Server"] },
-                        { "category": "Game Development", "technologies": ["Unity", "C++"] },
+                        { "category": "Mobile & Frontend", "technologies": ["Flutter", "Blazor", "HTML/CSS/Bootstrap"] },
+                        { "category": "Game Development", "technologies": ["Unity", "C++", "C#"] },
                         { "category": "Tools & Other", "technologies": ["Git", "Windows Forms"] }
                     ],
-                    "education": { "degree": "BS in Computer Engineering", "university": "University of Isfahan", "years": "2012 – 2023" },
-                    "languages": [ { "name": "Persian", "proficiency": "Native" }, { "name": "English", "proficiency": "Professional" } ]
+                    "education": { "degree": "BS in Computer Engineering", "university": "University of Isfahan", "years": "2019 – 2023" },
+                    "languages": [{ "name": "Persian", "proficiency": "Native" }, { "name": "English", "proficiency": "Professional" }]
                 },
                 "main": {
                     "sections": { "summary": "Summary", "experience": "Work Experience", "projects": "Projects", "courses": "Courses" },
                     "summary": "A dedicated and versatile software developer with experience in mobile development using Flutter and backend services with ASP.NET Core. Passionate about building clean, efficient applications and contributing to innovative projects in a collaborative team environment.",
                     "experience": [
-                        { "title": "Freelance Developer", "company": "Remote", "period": "April 2024 – Present", "description": ["Developing applications using .NET and Flutter for various clients."] },
-                        { "title": "Android Developer (Flutter)", "company": "Barnamenevisan Pasargad Co.", "period": "November 2022 – Present", "description": [] },
-                        { "title": "Game Developer (Unity)", "company": "Entertainment Industry Innovation Center, University of Isfahan", "period": "May 2022 – October 2022", "description": ["Developed games using the Unity engine.", "Contributed to the implementation of online game infrastructure with ASP.NET Core and RESTful APIs."] }
+                        { "title": "Freelance Developer", "company": "Remote", "period": "April 2024 – Present", "description": ["Developing applications using .NET and Flutter for various clients."], "tags": [".NET", "Flutter"] },
+                        { "title": "Software Developer", "company": "Barnamenevisan Pasargad Co.", "period": "November 2022 – Present", "description": [], "tags": [".NET", "ASP.NET Core", "C#", "Flutter"] },
+                        { "title": "Game Developer (Unity)", "company": "Entertainment Industry Innovation Center, University of Isfahan", "period": "May 2022 – October 2022", "description": ["Developed games using the Unity engine.", "Contributed to the implementation of online game infrastructure with ASP.NET Core and RESTful APIs."], "tags": ["Unity", "C#", "ASP.NET Core"] }
                     ],
                     "projects": [
                         { "name": "Planza - Goal & Task Manager", "description": "Android app for managing long-term goals, daily tasks, and habits.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/planza", "urlText": "View on GitHub", "icon": "fab fa-github" },
@@ -221,7 +264,7 @@
                         { "name": "Flutter Chess Game", "description": "A complete chess game implemented using Flutter.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/flutter-chess-game", "urlText": "View on GitHub", "icon": "fab fa-github" },
                         { "name": "Online Room Reservation App", "description": "Web application for booking rooms online.", "tags": ["ASP.NET Core", "Blazor"], "url": "https://panel.zaersarafatemiye.ir/", "urlText": "View Live", "icon": "fas fa-external-link-alt" }
                     ],
-                    "courses": [ "Flutter Course - Udemy (Maximilian)", "ASP.NET MVC Course - Toplearn", "ASP.NET Core Course - Toplearn", "Game Development with Unity - University of Isfahan" ]
+                    "courses": ["Flutter Course - Udemy (Maximilian)", "ASP.NET MVC Course - Toplearn", "ASP.NET Core Course - Toplearn", "Game Development with Unity - University of Isfahan"]
                 }
             },
             "fa": {
@@ -231,21 +274,21 @@
                     "sections": { "contact": "اطلاعات تماس", "skills": "مهارت‌ها", "education": "تحصیلات", "languages": "زبان‌ها" },
                     "contact": { "email": "amirhosseinzamani454@gmail.com", "phone": "۰۹۳۹۱۸۲۷۵۹۹", "location": "اصفهان، ایران", "githubUrl": "https://github.com/Amir-Hzz79", "telegram": "https://t.me/Amir_Hzz79" },
                     "skills": [
-                        { "category": "موبایل و فرانت‌اند", "technologies": ["Flutter", "Blazor", "HTML/CSS"] },
                         { "category": "بک‌اند و پایگاه داده", "technologies": ["C#", "ASP.NET Core", "REST API", "Entity Framework", "MS SQL Server"] },
-                        { "category": "توسعه بازی", "technologies": ["Unity", "C++"] },
+                        { "category": "موبایل و فرانت‌اند", "technologies": ["Flutter", "Blazor", "HTML/CSS/Bootstrap"] },
+                        { "category": "توسعه بازی", "technologies": ["Unity", "C++", "C#"] },
                         { "category": "ابزارها و سایر", "technologies": ["Git", "Windows Forms"] }
                     ],
-                    "education": { "degree": "کارشناسی مهندسی کامپیوتر", "university": "دانشگاه اصفهان", "years": "۱۳۹۱ – ۱۴۰۲" },
-                    "languages": [ { "name": "فارسی", "proficiency": "زبان مادری" }, { "name": "انگلیسی", "proficiency": "حرفه‌ای" } ]
+                    "education": { "degree": "کارشناسی مهندسی کامپیوتر", "university": "دانشگاه اصفهان", "years": "۱۳۹۸ – ۱۴۰۲" },
+                    "languages": [{ "name": "فارسی", "proficiency": "زبان مادری" }, { "name": "انگلیسی", "proficiency": "حرفه‌ای" }]
                 },
                 "main": {
                     "sections": { "summary": "خلاصه", "experience": "سوابق شغلی", "projects": "پروژه‌ها", "courses": "دوره‌های آموزشی" },
                     "summary": "توسعه‌دهنده نرم‌افزار متعهد و همه‌کاره با تجربه در توسعه اپلیکیشن‌های موبایل با فلاتر و سرویس‌های بک‌اند با ASP.NET Core. علاقه‌مند به ساخت برنامه‌های تمیز و کارآمد و مشارکت در پروژه‌های نوآورانه در یک محیط تیمی.",
                     "experience": [
-                        { "title": "توسعه‌دهنده فریلنسر", "company": "دورکاری", "period": "فروردین ۱۴۰۳ – تاکنون", "description": ["توسعه اپلیکیشن‌ها با استفاده از .NET و فلاتر برای مشتریان مختلف."] },
-                        { "title": "توسعه‌دهنده اندروید (فلاتر)", "company": "شرکت برنامه‌نویسان پاسارگاد", "period": "آبان ۱۴۰۱ – تاکنون", "description": [] },
-                        { "title": "توسعه‌دهنده بازی (یونیتی)", "company": "مرکز نوآوری صنعت سرگرمی، دانشگاه اصفهان", "period": "اردیبهشت ۱۴۰۱ – مهر ۱۴۰۱", "description": ["توسعه بازی‌ها با استفاده از موتور یونیتی.", "مشارکت در پیاده‌سازی زیرساخت بازی آنلاین با ASP.NET Core و RESTful API."] }
+                        { "title": "توسعه‌دهنده فریلنسر", "company": "دورکاری", "period": "فروردین ۱۴۰۳ – تاکنون", "description": ["توسعه اپلیکیشن‌ها با استفاده از .NET و فلاتر برای مشتریان مختلف."], "tags": [".NET", "Flutter"] },
+                        { "title": "توسعه‌دهنده نرم‌افزار", "company": "شرکت برنامه‌نویسان پاسارگاد", "period": "آبان ۱۴۰۱ – تاکنون", "description": [], "tags": [".NET", "ASP.NET Core", "C#", "Flutter"] },
+                        { "title": "توسعه‌دهنده بازی (یونیتی)", "company": "مرکز نوآوری صنعت سرگرمی، دانشگاه اصفهان", "period": "اردیبهشت ۱۴۰۱ – مهر ۱۴۰۱", "description": ["توسعه بازی‌ها با استفاده از موتور یونیتی.", "مشارکت در پیاده‌سازی زیرساخت بازی آنلاین با ASP.NET Core و RESTful API."], "tags": ["Unity", "C#", "ASP.NET Core"] }
                     ],
                     "projects": [
                         { "name": "پلنزا - مدیر اهداف و وظایف", "description": "اپلیکیشن اندروید برای مدیریت اهداف بلندمدت، وظایف روزانه و عادت‌ها.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/planza", "urlText": "مشاهده در گیت‌هاب", "icon": "fab fa-github" },
@@ -254,7 +297,7 @@
                         { "name": "بازی شطرنج با فلاتر", "description": "یک بازی کامل شطرنج که با استفاده از فلاتر پیاده‌سازی شده است.", "tags": ["Flutter"], "url": "https://github.com/Amir-Hzz79/flutter-chess-game", "urlText": "مشاهده در گیت‌هاب", "icon": "fab fa-github" },
                         { "name": "اپلیکیشن رزرو آنلاین اتاق", "description": "اپلیکیشن وب برای رزرو آنلاین اتاق.", "tags": ["ASP.NET Core", "Blazor"], "url": "https://panel.zaersarafatemiye.ir/", "urlText": "مشاهده آنلاین", "icon": "fas fa-external-link-alt" }
                     ],
-                    "courses": [ "دوره فلاتر - یودمی (ماکسیمیلیان)", "دوره ASP.NET MVC - تاپ‌لرن", "دوره ASP.NET Core - تاپ‌لرن", "دوره توسعه بازی با یونیتی - دانشگاه اصفهان" ]
+                    "courses": ["دوره فلاتر - یودمی (ماکسیمیلیان)", "دوره ASP.NET MVC - تاپ‌لرن", "دوره ASP.NET Core - تاپ‌لرن", "دوره توسعه بازی با یونیتی - دانشگاه اصفهان"]
                 }
             }
         };
@@ -284,7 +327,7 @@
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
-            
+
             // --- LANGUAGE SWITCHER LOGIC ---
             const getInitialLang = () => {
                 const savedLang = localStorage.getItem('language');
@@ -320,9 +363,9 @@
             function createShapes() {
                 backgroundContainer.innerHTML = '';
                 for (let i = 0; i < 9; i++) {
-                    const skill = allSkills[ (currentSkillIndex + i) % allSkills.length ];
+                    const skill = allSkills[(currentSkillIndex + i) % allSkills.length];
                     const element = document.createElement(skillIcons[skill] ? 'i' : 'span');
-                    
+
                     if (skillIcons[skill]) {
                         element.className = `shape ${skillIcons[skill]}`;
                     } else {
@@ -335,7 +378,7 @@
                     element.style.fontSize = `${Math.random() * 2 + 2.5}rem`; // 2.5rem to 4.5rem
                     element.style.animationDuration = `${Math.random() * 15 + 20}s`; // 20s to 35s
                     element.style.animationDelay = `${Math.random() * 5}s`;
-                    
+
                     backgroundContainer.appendChild(element);
                 }
                 currentSkillIndex = (currentSkillIndex + 9) % allSkills.length;
@@ -416,6 +459,11 @@
                                         <p class="text-md whitespace-nowrap mt-2 sm:mt-0" style="color: var(--text-secondary);">${job.period}</p>
                                     </div>
                                     ${job.description && job.description.length > 0 ? `<ul class="mt-4 list-disc list-inside space-y-2" style="color: var(--text-secondary);">${job.description.map(item => `<li>${item}</li>`).join('')}</ul>` : ''}
+                                    ${job.tags && job.tags.length > 0 ? `
+                                        <div class="mt-4 flex flex-wrap gap-2">
+                                            ${job.tags.map(tag => `<span class="skill-tag text-xs px-2 py-1 rounded-full">${tag}</span>`).join('')}
+                                        </div>
+                                    ` : ''}
                                 </div>
                             `).join('')}
                         </div>
@@ -486,4 +534,5 @@
         }
     </script>
 </body>
+
 </html>
